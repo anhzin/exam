@@ -14,6 +14,9 @@ namespace BankSystem.Services
         void InsertUser(User user);
         void DeleteUser(Guid userID);
         void UpdateUser(User user);
+        int Deposite(decimal amount);
+        int WithDraw(decimal amount);
+        int Transfer(decimal amount,string target);
         void Save();
         
     }

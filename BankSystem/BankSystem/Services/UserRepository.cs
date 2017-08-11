@@ -73,5 +73,20 @@ namespace BankSystem.Services
             return context.Users
                 .SingleOrDefault(m => m.AccountName.Equals(userName) && m.Password.Equals(password));
         }
+
+        public int Deposite(decimal amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int WithDraw(decimal amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Transfer(decimal amount, string target)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

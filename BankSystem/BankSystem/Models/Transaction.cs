@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BankSystem.Models
 {
@@ -13,6 +12,9 @@ namespace BankSystem.Models
         public decimal Amount { get; set; }
         public string Target { get; set; }
         public bool Status { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm tt}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Created Date")]
         public DateTime CreatedDate { get; set; }
     }
 
