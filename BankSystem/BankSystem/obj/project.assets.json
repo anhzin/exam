@@ -10723,10 +10723,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Zin\\BankSystem\\BankSystem\\BankSystem.csproj",
+      "projectUniqueName": "D:\\Demo\\exam\\BankSystem\\BankSystem\\BankSystem.csproj",
       "projectName": "BankSystem",
-      "projectPath": "D:\\Zin\\BankSystem\\BankSystem\\BankSystem.csproj",
-      "outputPath": "D:\\Zin\\BankSystem\\BankSystem\\obj\\",
+      "projectPath": "D:\\Demo\\exam\\BankSystem\\BankSystem\\BankSystem.csproj",
+      "outputPath": "D:\\Demo\\exam\\BankSystem\\BankSystem\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
