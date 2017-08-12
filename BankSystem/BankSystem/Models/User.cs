@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BankSystem.Models
 {
-    public class User
+    public class User : BaseEntity
     {
-        public Guid ID { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid AccountNumber { get; set; }
 

@@ -4,10 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BankSystem.Models
 {
-    public class Transaction
+    public class Transaction : BaseEntity
     {
-        public Guid ID { get; set; }
-        public Guid AccountNumber { get; set; }
+        public Guid UserID { get; set; }
         public TransactionTypes? Type { get; set; }
         public decimal Amount { get; set; }
         public string Target { get; set; }

@@ -16,15 +16,6 @@ D:\Zin\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.csprojResolveAss
 D:\Zin\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.AssemblyInfo.cs
 D:\Zin\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.dll
 D:\Zin\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.pdb
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.deps.json
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.runtimeconfig.json
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.runtimeconfig.dev.json
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.dll
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.pdb
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.csprojResolveAssemblyReference.cache
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.AssemblyInfo.cs
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.dll
-D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.pdb
 D:\Demo\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.deps.json
 D:\Demo\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.runtimeconfig.json
 D:\Demo\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.runtimeconfig.dev.json
@@ -34,3 +25,12 @@ D:\Demo\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.csprojReso
 D:\Demo\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.AssemblyInfo.cs
 D:\Demo\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.dll
 D:\Demo\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.pdb
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.deps.json
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.runtimeconfig.json
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.runtimeconfig.dev.json
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.dll
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\bin\Debug\netcoreapp1.1\BankSystem.pdb
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.csprojResolveAssemblyReference.cache
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.AssemblyInfo.cs
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.dll
+D:\WorkSpace\C# and web\Website ASP\exam\BankSystem\BankSystem\obj\Debug\netcoreapp1.1\BankSystem.pdb

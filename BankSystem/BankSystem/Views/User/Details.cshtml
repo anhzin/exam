@@ -11,20 +11,20 @@
         <div class="col  col-md-4">
             <ul>
                 <li>
-                    <a asp-controller="Transactions" asp-action="Deposite" asp-route-accountNumber="@Model.AccountNumber">Deposite</a>
+                    <a asp-controller="User" asp-action="Deposite" asp-route-id="@Model.ID">Deposite</a>
                 </li>
                 <li>
-                    <a asp-controller="Transactions" asp-action="WithDraw" asp-route-accountNumber="@Model.AccountNumber">WithDraw</a>
+                    <a asp-controller="User" asp-action="WithDraw" asp-route-id="@Model.ID">WithDraw</a>
                 </li>
                 <li>
-                    <a asp-controller="Transactions" asp-action="Transfer" asp-route-accountNumber="@Model.AccountNumber">Transfer</a>
+                    <a asp-controller="User" asp-action="Transfer" asp-route-id="@Model.ID">Transfer</a>
                 </li>
                 <li>
-                    <a asp-controller="Transactions" asp-action="Index" asp-route-accountNumber="@Model.AccountNumber">Report Transactions</a>
+                    <a asp-controller="User" asp-action="Report" asp-route-id="@Model.ID">Report Transactions</a>
                 </li>
             </ul>
         </div>
-        <div class="col  col-md-4">
+        <div class="col  col-md-8">
             <dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.AccountNumber)

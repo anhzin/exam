@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using BankSystem.Data;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+using Microsoft.AspNetCore.Http;
+using BankSystem.DataAccess.Repositories;
 
 namespace BankSystem
 {
@@ -32,7 +35,9 @@ namespace BankSystem
             // Add framework services.
             services.AddDbContext<BankSystemContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddMvc();
         }
 
