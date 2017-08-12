@@ -18,7 +18,7 @@ namespace BankSystem.Data
         public DbSet<Transaction> Transactions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("User").Property(p => p.RowVersion).IsConcurrencyToken(); ;
+            modelBuilder.Entity<User>().ToTable("User").Property(p => p.RowVersion).IsConcurrencyToken();
             modelBuilder.Entity<Transaction>().ToTable("Transaction");
         }
     }

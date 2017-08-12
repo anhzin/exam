@@ -11,8 +11,7 @@ namespace BankSystem.Data
         public static void Initialize(BankSystemContext context)
         {
             context.Database.EnsureCreated();
-
-            // Look for any students.
+            
             if (context.Users.Any())
             {
                 return;   // DB has been seeded
