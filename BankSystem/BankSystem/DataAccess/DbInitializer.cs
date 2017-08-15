@@ -34,8 +34,6 @@ namespace BankSystem.Data
 
             context.Users.AddRange(users);
             context.SaveChanges();
-            
-
         }
     }
 }

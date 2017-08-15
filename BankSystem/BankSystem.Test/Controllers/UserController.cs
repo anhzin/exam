@@ -4,23 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using BankSystem.Data;
-using BankSystem.Models;
-using BankSystem.DataAccess;
 using BankSystem.BusinessLogic.Services;
-using BankSystem.DataAccess.Repositories;
+using BankSystem.Test.Data;
+using BankSystem.Test.DataAccess.Repositories;
+using BankSystem.Test.Models;
 
-namespace BankSystem.Controllers
+namespace BankSystem.Test.Controllers
 {
-    public class UserController: Controller
+    public class UserController : Controller
     {
-        private readonly BankSystemContext _context;
         private static UserService _userService;
         private static TransactionService _transactionService;
         private static UnitOfWork _unitOfwork;
 
-        
+
         private static Guid userID;
 
         public UserController(BankSystemContext context)
@@ -88,7 +85,6 @@ namespace BankSystem.Controllers
             }
             catch (Exception ex)
             {
-                //Log the error (uncomment dex variable name after DataException and add a line here to write a log.
                 ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
                 return View(user);
             }
@@ -135,7 +131,7 @@ namespace BankSystem.Controllers
             // return RedirectToAction("Index", "Home", null);
         }
 
-        
+
         // GET: Transactions/Deposite
         public IActionResult Deposite(Guid id)
 
@@ -218,7 +214,7 @@ namespace BankSystem.Controllers
             var transaction = new Transaction();
             if (ModelState.IsValid)
             {
-                var operationStatus = _userService.Transfer(userID, amount,target);
+                var operationStatus = _userService.Transfer(userID, amount, target);
                 bool statusTrans = false;
                 if (!operationStatus.Status)
                 {
@@ -238,7 +234,7 @@ namespace BankSystem.Controllers
             var listTransactions = _transactionService.GetAllTransactionOfUser(id);
             return View(listTransactions);
         }
-        
+
 
         private void CreateAndAddTransaction(TransactionTypes type, decimal amount, bool status, Guid userID, string target)
         {

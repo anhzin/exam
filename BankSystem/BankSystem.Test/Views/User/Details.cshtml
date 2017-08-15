@@ -1,0 +1,57 @@
+@model BankSystem.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4> User Profile</h4>
+    <hr />
+    <div class="col  col-md-12">
+        <div class="col  col-md-4">
+            <ul>
+                <li>
+                    <a asp-controller="User" asp-action="Deposite" asp-route-id="@Model.ID">Deposite</a>
+                </li>
+                <li>
+                    <a asp-controller="User" asp-action="WithDraw" asp-route-id="@Model.ID">WithDraw</a>
+                </li>
+                <li>
+                    <a asp-controller="User" asp-action="Transfer" asp-route-id="@Model.ID">Transfer</a>
+                </li>
+                <li>
+                    <a asp-controller="User" asp-action="Report" asp-route-id="@Model.ID">Report Transactions</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col  col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AccountNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AccountName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Balance)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+</div>

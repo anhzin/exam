@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BankSystem/.vs
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1/BankSystem.runtimeconfig.json
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1/BankSystem.runtimeconfig.dev.json
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1/BankSystem.pdb
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1/BankSystem.dll
+/BankSystem/BankSystem/bin/Debug/netcoreapp1.1/BankSystem.deps.json

@@ -1,8 +1,7 @@
 ﻿
 using BankSystem.Common;
-using BankSystem.DataAccess;
-using BankSystem.DataAccess.Repositories;
-using BankSystem.Models;
+using BankSystem.Test.DataAccess.Repositories;
+using BankSystem.Test.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

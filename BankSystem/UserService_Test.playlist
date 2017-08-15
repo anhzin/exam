@@ -1,0 +1,11 @@
+<Playlist Version="1.0">
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanCreateUser (9ae2f85d157ed3c1e6cf68fdfd335aa7edd07c6e)" />
+
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanNotDepositeWithUserHasNotExistInSystem (fdf14cf54e3f33c2ad0f6871303907303ea3670f)" />
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanGetUserByUserName (d9faf1f0c68296e219327643b2ac4be2bdebc13d)" />
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanGetUserById (476390c50639b9510ce9e71805ac6271958cc162)" />
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanDepositeConcurrency (1edeb6966d1d37642c2bdd9a4384ad3cb7943511)" />
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanDepositeWithUserHasExistInSystem (81ee502949a1f8b437a5597a4c13744aead9c398)" />
+
+<Add Test="BankSystem.Test.UnitTest.UserService_Test.CanGetUserByUserNameAndPassword (90df02990d11936dc7e72651c0ef0d621f75cc0a)" />
+</Playlist>

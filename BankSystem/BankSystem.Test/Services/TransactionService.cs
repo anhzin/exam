@@ -1,8 +1,6 @@
 ﻿
-using BankSystem.Data;
-using BankSystem.DataAccess;
-using BankSystem.DataAccess.Repositories;
-using BankSystem.Models;
+using BankSystem.Test.DataAccess.Repositories;
+using BankSystem.Test.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
