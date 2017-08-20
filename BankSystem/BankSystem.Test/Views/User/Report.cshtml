@@ -1,4 +1,4 @@
-@model IEnumerable<BankSystem.Models.Transaction>
+@model IEnumerable<BankSystem.Test.Models.Transaction>
 
 @{
 }
@@ -11,9 +11,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.AccountNumber)
-                </th>
+              
                 <th>
                     @Html.DisplayNameFor(model => model.Type)
                 </th>
@@ -36,9 +34,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AccountNumber)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Type)
                     </td>

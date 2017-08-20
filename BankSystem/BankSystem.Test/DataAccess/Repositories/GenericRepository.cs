@@ -69,6 +69,10 @@ namespace BankSystem.Test.DataAccess.Repositories
         }
         public void Dispose()
         {
+            if (Context != null)
+            {
+                Context.Dispose();
+            }
             GC.SuppressFinalize(this);
         }
     }

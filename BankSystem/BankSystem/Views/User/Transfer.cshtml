@@ -34,7 +34,7 @@
 </form>
 
 <div>
-    <a asp-controller="Transactions" asp-action="DetailProfile">Back to profile</a>
+    <a asp-action="Details" asp-route-id="@Model.UserID">Back to profile</a>
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -15,13 +15,12 @@ namespace BankSystem.Controllers
 {
     public class UserController: Controller
     {
-        private readonly BankSystemContext _context;
         private static UserService _userService;
         private static TransactionService _transactionService;
         private static UnitOfWork _unitOfwork;
 
-        
-        private static Guid userID;
+
+        public static Guid userID;
 
         public UserController(BankSystemContext context)
         {
@@ -31,11 +30,11 @@ namespace BankSystem.Controllers
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(Guid id)
+        public IActionResult Details(Guid id)
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Home");
             }
 
             userID = id;
@@ -43,10 +42,10 @@ namespace BankSystem.Controllers
             var user = _userService.GetUserById(id);
             if (user == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Home");
             }
 
-            return View(user);
+            return View("Details", user);
         }
 
 
@@ -61,7 +60,7 @@ namespace BankSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,AccountName,Password")] User user)
+        public IActionResult Create([Bind("ID,AccountName,Password")] User user)
         {
 
             try
@@ -69,7 +68,7 @@ namespace BankSystem.Controllers
                 if (ModelState.IsValid)
                 {
                     var userExit = _userService.GetUserByUserName(user.AccountName);
-                    if (userExit != null)
+                    if (userExit == null)
                     {
                         user.ID = Guid.NewGuid();
                         user.AccountNumber = Guid.NewGuid();
@@ -81,15 +80,14 @@ namespace BankSystem.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "This name has exist in our system. Please choose another name!");
+                        ModelState.AddModelError("Create", "This name has exist in our system. Please choose another name!");
                         return View(user);
                     }
                 }
             }
             catch (Exception ex)
             {
-                //Log the error (uncomment dex variable name after DataException and add a line here to write a log.
-                ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
+                ModelState.AddModelError("Create", "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
                 return View(user);
             }
             return View(user);
@@ -106,7 +104,7 @@ namespace BankSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login([Bind("AccountName,Password")] User user)
+        public ActionResult Login([Bind("AccountName,Password")] User user)
         {
 
             try
@@ -116,32 +114,44 @@ namespace BankSystem.Controllers
                     var user1 = _userService.GetUserByUserNameAndPassword(user.AccountName, user.Password);
                     if (user1 == null)
                     {
-                        ModelState.AddModelError(string.Empty, "Unable to login. Try again, and if the problem persists contact your system administrator.");
+                        ModelState.AddModelError("Login", "Unable to login. Try again, and if the problem persists contact your system administrator.");
                         return View(user);
                     }
 
                     return RedirectToAction("Details", "User", new { id = user1.ID });
 
                 }
-                ModelState.AddModelError(string.Empty, "Unable to login. Try again, and if the problem persists contact your system administrator.");
+                ModelState.AddModelError("Login", "Unable to login. Try again, and if the problem persists contact your system administrator.");
                 return View(user);
             }
             catch (Exception ex)
             {
                 //Log the error (uncomment dex variable name after DataException and add a line here to write a log.
-                ModelState.AddModelError(string.Empty, "Unable to login. Try again, and if the problem persists contact your system administrator.");
+                ModelState.AddModelError("Login", "Unable to login. Try again, and if the problem persists contact your system administrator.");
                 return View(user);
             }
             // return RedirectToAction("Index", "Home", null);
         }
 
-        
+
         // GET: Transactions/Deposite
         public IActionResult Deposite(Guid id)
-
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             userID = id;
-            return View();
+            var transaction = new Transaction();
+            transaction.UserID = id;
+            return View(transaction);
         }
 
         // POST: Transactions/Deposite
@@ -149,31 +159,56 @@ namespace BankSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Deposite(decimal amount)
+        public ActionResult Deposite(decimal amount)
         {
             var transaction = new Transaction();
-            if (ModelState.IsValid)
+            try
             {
-                var operationStatus = _userService.Deposite(userID, amount);
-                bool statusTrans = false;
-                if (!operationStatus.Status)
-                {
-                    statusTrans = true;
-                    ModelState.AddModelError(string.Empty, operationStatus.ExceptionMessage);
-                    return View(transaction);
-                }
-                CreateAndAddTransaction(TransactionTypes.Deposite, amount, statusTrans, userID, string.Empty);
-                return RedirectToAction("Details", new { id = userID });
-            }
 
-            return View(transaction);
+                if (ModelState.IsValid)
+                {
+                    var operationStatus = _userService.Deposite(userID, amount);
+                    bool statusTrans = false;
+                    if (!operationStatus.Status)
+                    {
+                        statusTrans = true;
+                        ModelState.AddModelError("Deposite", operationStatus.ExceptionMessage);
+                        return View(transaction);
+                    }
+                    else
+                    {
+                        CreateAndAddTransaction(TransactionTypes.Deposite, amount, statusTrans, userID, string.Empty);
+                        return RedirectToAction("Details", new { id = userID });
+                    }
+                }
+                ModelState.AddModelError("Deposite", "Unable to deposite!");
+                return View(transaction);
+            }
+            catch
+            {
+                ModelState.AddModelError("Deposite", "Unable to deposite!");
+                return View(transaction);
+            }
         }
 
         // GET: Transactions/WithDraw
         public IActionResult WithDraw(Guid id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             userID = id;
-            return View();
+            var transaction = new Transaction();
+            transaction.UserID = id;
+            return View(transaction);
         }
 
         // POST: Transactions/WithDraw
@@ -181,17 +216,17 @@ namespace BankSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> WithDraw(decimal amount)
+        public ActionResult WithDraw(decimal amount)
         {
             var transaction = new Transaction();
             if (ModelState.IsValid)
             {
-                var operationStatus = _userService.Deposite(userID, amount);
+                var operationStatus = _userService.WithDraw(userID, amount);
                 bool statusTrans = false;
                 if (!operationStatus.Status)
                 {
                     statusTrans = true;
-                    ModelState.AddModelError(string.Empty, operationStatus.ExceptionMessage);
+                    ModelState.AddModelError("WithDraw", operationStatus.ExceptionMessage);
                     return View(transaction);
                 }
                 CreateAndAddTransaction(TransactionTypes.Deposite, amount, statusTrans, userID, string.Empty);
@@ -204,8 +239,21 @@ namespace BankSystem.Controllers
         // GET: Transactions/Transfer
         public IActionResult Transfer(Guid id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             userID = id;
-            return View();
+            var transaction = new Transaction();
+            transaction.UserID = id;
+            return View(transaction);
         }
 
         // POST: Transactions/WithDraw
@@ -213,17 +261,17 @@ namespace BankSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Transfer(decimal amount, Guid target)
+        public IActionResult Transfer(decimal amount, Guid target)
         {
             var transaction = new Transaction();
             if (ModelState.IsValid)
             {
-                var operationStatus = _userService.Transfer(userID, amount,target);
+                var operationStatus = _userService.Transfer(userID, amount, target);
                 bool statusTrans = false;
                 if (!operationStatus.Status)
                 {
                     statusTrans = true;
-                    ModelState.AddModelError(string.Empty, operationStatus.ExceptionMessage);
+                    ModelState.AddModelError("Transfer", operationStatus.ExceptionMessage);
                     return View(transaction);
                 }
                 CreateAndAddTransaction(TransactionTypes.Deposite, amount, statusTrans, userID, string.Empty);
@@ -233,12 +281,24 @@ namespace BankSystem.Controllers
             return View(transaction);
         }
         // GET: Transactions
-        public async Task<IActionResult> Report(Guid id)
+        public IActionResult Report(Guid id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            userID = id;
             var listTransactions = _transactionService.GetAllTransactionOfUser(id);
             return View(listTransactions);
         }
-        
+
 
         private void CreateAndAddTransaction(TransactionTypes type, decimal amount, bool status, Guid userID, string target)
         {

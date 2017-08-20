@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BankSystem.DataAccess.Repositories
 {
-    public class GenericRepository<TEntity> : IRepository<TEntity> where  TEntity : BaseEntity
+    public class GenericRepository<TEntity> : IDisposable, IRepository<TEntity> where  TEntity : BaseEntity
     {
         private readonly BankSystemContext Context;
         public GenericRepository(BankSystemContext dbContext)
@@ -66,8 +66,13 @@ namespace BankSystem.DataAccess.Repositories
         {
             Context.Set<TEntity>().Update(entity);
         }
+
         public void Dispose()
         {
+            if (Context != null)
+            {
+                Context.Dispose();
+            }
             GC.SuppressFinalize(this);
         }
     }

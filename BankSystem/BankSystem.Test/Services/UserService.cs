@@ -17,10 +17,18 @@ namespace BankSystem.BusinessLogic.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public void Register(User user)
+        public OperationStatus Register(User user)
         {
-            _unitOfWork.UserRepository.Add(user);
-            _unitOfWork.UserRepository.SaveChanges();
+            var opStatus = new OperationStatus { Status = true };
+            try
+            {
+                _unitOfWork.UserRepository.Add(user);
+                _unitOfWork.UserRepository.SaveChanges();
+            }catch
+            {
+                opStatus.Status = false;
+            }
+            return opStatus;
         }
         public User GetUserById(Guid id)
         {
