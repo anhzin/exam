@@ -12,35 +12,16 @@ using Xunit;
 
 namespace BankSystem.Test.UnitTest
 {
-    public class BankSystemContext_Test
+    public class BankSystemContext_Test: MockContext
     {
-        private readonly DbContextOptions<BankSystemContext> options;
-
-        public BankSystemContext_Test()
+        [Fact(DisplayName = "BankSystemContext_Should_Fetch_Database_Record")]
+        public void RahmatSsoDbContext_Should_Fetch_Database_Record()
         {
-            var connectionString = @"Server=(localdb)\mssqllocaldb;Database=BankSystem_Test;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
-
-            options = new DbContextOptionsBuilder<BankSystemContext>()
-                   .UseSqlServer(connectionString)
-                   .Options;
-
-
-            var services = new ServiceCollection()
-     .AddDbContext<BankSystemContext>(
-         b => b.UseSqlServer(connectionString));
-            // Create the schema in the database
-            using (var bsc = new BankSystemContext(options))
+            using (var ctx = new BankSystemContext())
             {
-
-                bsc.Database.EnsureCreatedAsync();
+                var result = ctx.Users.First();
+                Assert.NotNull(result);
             }
-        }
-
-        [Fact]
-        public void CanCreateUser()
-        {
-
-            
         }
     }
 }

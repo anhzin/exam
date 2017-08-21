@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace BankSystem.Test.Data
 {
-    public class BankSystemContext : DbContext
+    public class BankSystemContext : DbContext, IDisposable
     {
         public BankSystemContext(DbContextOptions<BankSystemContext> options) : base(options)
+        {
+        }
+
+        public BankSystemContext()
         {
         }
 

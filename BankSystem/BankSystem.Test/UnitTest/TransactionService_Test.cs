@@ -16,7 +16,7 @@ namespace BankSystem.Test.UnitTest
     public class TransactionService_Test : TestsBase
     {
 
-        [Fact]
+        [Fact(DisplayName = "CanAddNewTransaction")]
         public void CanAddNewTransaction()
         {
             OperationStatus ops;
@@ -55,7 +55,7 @@ namespace BankSystem.Test.UnitTest
         }
 
 
-        [Fact]
+        [Fact(DisplayName = "CanGetAllTransactionOfUser")]
         public void CanGetAllTransactionOfUser()
         {
             OperationStatus ops;

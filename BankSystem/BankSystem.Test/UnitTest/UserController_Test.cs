@@ -17,7 +17,7 @@ namespace BankSystem.Test.UnitTest
 {
     public class UserController_Test : TestsBase
     {
-        [Fact]
+        [Fact(DisplayName = "ActionCreateShouldReturnIActionResult")]
         public void ActionCreateShouldReturnIActionResult()
         {
             var controller = new UserController(bsc);
@@ -25,7 +25,7 @@ namespace BankSystem.Test.UnitTest
             Assert.NotNull(result);
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionCreateShouldRedirectToActionIndexWhenSuccess")]
         public void ActionCreateShouldRedirectToActionIndexWhenSuccess()
         {
 
@@ -38,7 +38,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionCreateShouldReturnToViewCreateIfInputUserNotValid")]
         public void ActionCreateShouldReturnToViewCreateIfInputUserNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -49,7 +49,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionCreateShouldReturnToViewCreateIfUserExist")]
         public void ActionCreateShouldReturnToViewCreateIfUserExist()
         {
             var user = CreateUserForTesting();
@@ -72,7 +72,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionLoginShouldReturnIActionResult")]
         public void ActionLoginShouldReturnIActionResult()
         {
             var controller = new UserController(bsc);
@@ -80,7 +80,7 @@ namespace BankSystem.Test.UnitTest
             Assert.NotNull(result);
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionLoginShouldRedirectToActionDetailWhenSuccess")]
         public void ActionLoginShouldRedirectToActionDetailWhenSuccess()
         {
             var user = CreateUserForTesting();
@@ -104,7 +104,7 @@ namespace BankSystem.Test.UnitTest
         }
 
 
-        [Fact]
+        [Fact(DisplayName = "ActionLoginShouldReturnToViewLoginIfUserNotValid")]
         public void ActionLoginShouldReturnToViewLoginIfUserNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -115,7 +115,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionLoginShouldReturnToViewLoginIfUserNotExist")]
         public void ActionLoginShouldReturnToViewLoginIfUserNotExist()
         {
             using (var context = new BankSystemContext(options))
@@ -132,7 +132,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionDetailsShouldReturnToViewDetailsWhenSuccess")]
         public void ActionDetailsShouldReturnToViewDetailsWhenSuccess()
         {
             var user = CreateUserForTesting();
@@ -156,7 +156,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionDetailsShouldRedirectToHomeIfUserIdNotValid")]
         public void ActionDetailsShouldRedirectToHomeIfUserIdNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -168,7 +168,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionDepositeShouldReturnToViewDepositeIfUserExist")]
         public void ActionDepositeShouldReturnToViewDepositeIfUserExist()
         {
             var user = CreateUserForTesting();
@@ -190,8 +190,8 @@ namespace BankSystem.Test.UnitTest
 
             }
         }
-        
-        [Fact]
+
+        [Fact(DisplayName = "ActionDepositeShouldRedirectToHomeIfUserIdNotValid")]
         public void ActionDepositeShouldRedirectToHomeIfUserIdNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -203,7 +203,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionWithDrawShouldReturnToViewWithDrawIfUserExist")]
         public void ActionWithDrawShouldReturnToViewWithDrawIfUserExist()
         {
             var user = CreateUserForTesting();
@@ -226,7 +226,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionWithDrawShouldReturnToViewWithDrawWhenSuccess")]
         public void ActionWithDrawShouldReturnToViewWithDrawWhenSuccess()
         {
             var user = CreateUserForTesting();
@@ -252,7 +252,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionWithDrawShouldReturnToViewWithDrawWhenAmountNumberLargerThanBalance")]
         public void ActionWithDrawShouldReturnToViewWithDrawWhenAmountNumberLargerThanBalance()
         {
             var user = CreateUserForTesting();
@@ -278,7 +278,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionWithDrawShouldRedirectToDetailsWhenSuccess")]
         public void ActionWithDrawShouldRedirectToDetailsWhenSuccess()
         {
             var user = CreateUserForTesting();
@@ -302,7 +302,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionWithDrawShouldRedirectToHomeIfUserIdNotValid")]
         public void ActionWithDrawShouldRedirectToHomeIfUserIdNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -314,7 +314,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionTransferShouldReturnToViewTransferIfUserExist")]
         public void ActionTransferShouldReturnToViewTransferIfUserExist()
         {
             var user = CreateUserForTesting();
@@ -337,7 +337,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionTransferShouldReturnToViewTransferIfUserTargetNotExist")]
         public void ActionTransferShouldReturnToViewTransferIfUserTargetNotExist()
         {
             var user = CreateUserForTesting();
@@ -364,7 +364,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionTransferShouldReturnToViewTransferIfAmountNumberLargerThanBalance")]
         public void ActionTransferShouldReturnToViewTransferIfAmountNumberLargerThanBalance()
         {
             var user = CreateUserForTesting();
@@ -391,7 +391,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionTransferShouldReturnToViewTransferWhenSuccess")]
         public void ActionTransferShouldReturnToViewTransferWhenSuccess()
         {
             var user = CreateUserForTesting();
@@ -419,7 +419,7 @@ namespace BankSystem.Test.UnitTest
         }
 
 
-        [Fact]
+        [Fact(DisplayName = "ActionTransferShouldRedirectToHomeIfUserIdNotValid")]
         public void ActionTransferShouldRedirectToHomeIfUserIdNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -431,7 +431,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionReportShouldRedirectToHomeIfUserIdNotValid")]
         public void ActionReportShouldRedirectToHomeIfUserIdNotValid()
         {
             using (var context = new BankSystemContext(options))
@@ -443,7 +443,7 @@ namespace BankSystem.Test.UnitTest
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "ActionReportShouldRedirectToHomeIfUserExist")]
         public void ActionReportShouldRedirectToHomeIfUserExist()
         {
             var user = CreateUserForTesting();
