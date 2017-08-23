@@ -15,8 +15,8 @@ namespace BankSystem.DataAccess.Repositories
         int Count();
         bool Any(Expression<Func<TEntity, bool>> predicate);
         TEntity GetById(Guid id);
-        void Add(TEntity entity);
-        void Delete(TEntity entity);
-        void Update(TEntity entity);
+        bool Add(TEntity entity);
+        bool Delete(TEntity entity);
+        bool Update(TEntity entity);
     }
 }

@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace BankSystem.Test.DataAccess.Repositories
 {
-    public class GenericRepository<TEntity> : IRepository<TEntity> where  TEntity : BaseEntity
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly BankSystemContext Context;
         public GenericRepository(BankSystemContext dbContext)
         {
             Context = dbContext;
         }
-       
+
 
         public virtual void SaveChanges()
         {
@@ -54,18 +54,45 @@ namespace BankSystem.Test.DataAccess.Repositories
             return Context.Set<TEntity>().FirstOrDefault(entity => entity.ID == id);
         }
 
-        public virtual void Add(TEntity entity)
+        public virtual bool Add(TEntity entity)
         {
-            Context.Set<TEntity>().Add(entity);
+            try
+            {
+                Context.Set<TEntity>().Add(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public virtual void Delete(TEntity entity)
+        public virtual bool Delete(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity);
+            try
+            {
+                Context.Set<TEntity>().Remove(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
-        public virtual void Update(TEntity entity)
+        public virtual bool Update(TEntity entity)
         {
-            Context.Set<TEntity>().Update(entity);
+            try
+            {
+                Context.Set<TEntity>().Update(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
         }
         public void Dispose()
         {

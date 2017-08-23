@@ -35,7 +35,7 @@ namespace BankSystem.Test
         {
             // Add framework services.
             services.AddDbContext<BankSystemContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();

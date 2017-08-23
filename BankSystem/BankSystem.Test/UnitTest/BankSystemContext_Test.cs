@@ -12,7 +12,7 @@ using Xunit;
 
 namespace BankSystem.Test.UnitTest
 {
-    public class BankSystemContext_Test: MockContext
+    public class BankSystemContext_Test
     {
         [Fact(DisplayName = "BankSystemContext_Should_Fetch_Database_Record")]
         public void RahmatSsoDbContext_Should_Fetch_Database_Record()
